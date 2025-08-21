@@ -1,0 +1,41 @@
+name: Check Scrobbles
+
+# Here, this action will be enabled on all pushes.
+# Modify this to fit your needs.
+on:
+    push
+
+# Jobs section
+jobs:
+    super-job:
+        runs-on:  ubuntu-latest
+        container:
+            image: ghcr.io/foxxmd/multi-scrobbler:0.9.11
+            env:
+              YTM_CLIENT_ID: ${{ secrets.YTM_CLIENT_ID }}
+              YTM_CLIENT_SECRET: ${{ secrets.YTM_CLIENT_SECRET }}
+              LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+              LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+
+#            credentials:
+#               username: <YOUR_USERNAME>
+#               password: ${{  secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}
+        steps:
+            - name: super-step
+              shell: bash
+              run: |
+                echo "running multi-scrobbler"
+
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#    - uses: actions/checkout@v4
+#    - name: Build the site in the jekyll/builder container
+#      run: |
+#        docker run \
+#        -e "YTM_CLIENT_ID=${{ secrets.YTM_CLIENT_ID }}" \
+#        -e "YTM_CLIENT_SECRET=${{ secrets.YTM_CLIENT_SECRET }}" \
+#       foxxmd/multi-scrobbler:0.9.11 /bin/bash -c ""
