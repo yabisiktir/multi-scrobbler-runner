@@ -33,7 +33,6 @@ jobs:
          timeout-minutes: 7
          steps:
            - uses: actions/checkout@v2
-
            - name: run scrobblerrr
              run: |
                 docker run --name multi-scrobbler \
