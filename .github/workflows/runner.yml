@@ -3,43 +3,42 @@ name: Check Scrobbles
 # Here, this action will be enabled on all pushes.
 # Modify this to fit your needs.
 on:
-    push
+  push
 
 # Jobs section
 jobs:
-#    super-job:
-#        runs-on:  ubuntu-latest
-#        container:
-#            image: ghcr.io/foxxmd/multi-scrobbler:0.9.11
-#            env:
-#              YTM_CLIENT_ID: ${{ secrets.YTM_CLIENT_ID }}
-#              YTM_CLIENT_SECRET: ${{ secrets.YTM_CLIENT_SECRET }}
-#              LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
-#              LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
-#              DISABLE_WEB: true
-#              DEBUG_MODE: true
-#
-#        timeout-minutes: 30   # LIMIT JOB TO 30 MINUTES
-#        steps:
-#            - name: super-step
-#              shell: bash
-#              timeout-minutes: 7
-#              run: |
-#                echo "running multi-scrobbler"
-#                sleep 300
-
-      old-job:
-         runs-on:  ubuntu-latest
-         timeout-minutes: 7
-         steps:
-           - uses: actions/checkout@v4
-           - name: run scrobblerrr
-             run: |
-                docker run --name multi-scrobbler \
-               -e "YTM_CLIENT_ID=${{ secrets.YTM_CLIENT_ID }}" \
-               -e "YTM_CLIENT_SECRET=${{ secrets.YTM_CLIENT_SECRET }}" \
-               -e "LASTFM_API_KEY=${{ secrets.LASTFM_API_KEY }}" \
-               -e "LASTFM_SECRET=${{ secrets.LASTFM_SECRET }}" \
-               foxxmd/multi-scrobbler:0.9.11
+  #    super-job:
+  #        runs-on:  ubuntu-latest
+  #        container:
+  #            image: ghcr.io/foxxmd/multi-scrobbler:0.9.11
+  #            env:
+  #              YTM_CLIENT_ID: ${{ secrets.YTM_CLIENT_ID }}
+  #              YTM_CLIENT_SECRET: ${{ secrets.YTM_CLIENT_SECRET }}
+  #              LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+  #              LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+  #              DISABLE_WEB: true
+  #              DEBUG_MODE: true
+  #
+  #        timeout-minutes: 30   # LIMIT JOB TO 30 MINUTES
+  #        steps:
+  #            - name: super-step
+  #              shell: bash
+  #              timeout-minutes: 7
+  #              run: |
+  #                echo "running multi-scrobbler"
+  #                sleep 300
+  old-job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: run scrobblerrr
+        run: |
+          docker run --name multi-scrobbler \
+          -e "YTM_CLIENT_ID=${{ secrets.YTM_CLIENT_ID }}" \
+          -e "YTM_CLIENT_SECRET=${{ secrets.YTM_CLIENT_SECRET }}" \
+          -e "LASTFM_API_KEY=${{ secrets.LASTFM_API_KEY }}" \
+          -e "LASTFM_SECRET=${{ secrets.LASTFM_SECRET }}" \
+          foxxmd/multi-scrobbler:0.9.11
 
 
