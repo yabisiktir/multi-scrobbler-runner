@@ -16,11 +16,14 @@ jobs:
               YTM_CLIENT_SECRET: ${{ secrets.YTM_CLIENT_SECRET }}
               LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
               LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+              DISABLE_WEB: true
+              DEBUG_MODE: true
+
         timeout-minutes: 30   # LIMIT JOB TO 30 MINUTES
         steps:
             - name: super-step
               shell: bash
-              timeout-minutes: 5
+              timeout-minutes: 7
               run: |
                 echo "running multi-scrobbler"
-                sleep 300
+                sleep 300 &
