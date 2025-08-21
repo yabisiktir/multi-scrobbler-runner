@@ -16,26 +16,11 @@ jobs:
               YTM_CLIENT_SECRET: ${{ secrets.YTM_CLIENT_SECRET }}
               LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
               LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
-
-#            credentials:
-#               username: <YOUR_USERNAME>
-#               password: ${{  secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}
+        timeout-minutes: 30   # LIMIT JOB TO 30 MINUTES
         steps:
             - name: super-step
               shell: bash
+              timeout-minutes: 5
               run: |
                 echo "running multi-scrobbler"
-
-#jobs:
-#  build:
-#
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#    - uses: actions/checkout@v4
-#    - name: Build the site in the jekyll/builder container
-#      run: |
-#        docker run \
-#        -e "YTM_CLIENT_ID=${{ secrets.YTM_CLIENT_ID }}" \
-#        -e "YTM_CLIENT_SECRET=${{ secrets.YTM_CLIENT_SECRET }}" \
-#       foxxmd/multi-scrobbler:0.9.11 /bin/bash -c ""
+                sleep 300
