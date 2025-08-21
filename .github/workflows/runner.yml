@@ -39,6 +39,7 @@ jobs:
           -e "YTM_CLIENT_SECRET=${{ secrets.YTM_CLIENT_SECRET }}" \
           -e "LASTFM_API_KEY=${{ secrets.LASTFM_API_KEY }}" \
           -e "LASTFM_SECRET=${{ secrets.LASTFM_SECRET }}" \
+          -p 9078:9078 \
           foxxmd/multi-scrobbler:0.9.11
 
 
