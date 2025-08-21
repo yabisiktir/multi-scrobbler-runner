@@ -26,4 +26,4 @@ jobs:
               timeout-minutes: 7
               run: |
                 echo "running multi-scrobbler"
-                sleep 300 &
+                sleep 300
